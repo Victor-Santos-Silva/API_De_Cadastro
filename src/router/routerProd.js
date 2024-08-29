@@ -8,7 +8,7 @@ router.get('/prod/',validateProd, (req, res) => {
     UserController.getAll(req, res)
 });
 
-router.post('/prod/', (req, res) => {
+router.post('/prod/',validateProd, (req, res) => {
     UserController.create(req, res)
 });
 
