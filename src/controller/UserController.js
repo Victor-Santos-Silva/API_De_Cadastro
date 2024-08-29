@@ -1,11 +1,14 @@
 const User = require("../models/User");
+const bcrypt = require('bcryptjs');
 
 const UserController = {
     create: async (req, res) => {
         try {
             const { nome, email, senha } = req.body;
+            //até 12 sal pode colocar
+            const hashSenha = await bcrypt.hash(senha, 10)
 
-            const userCriado = await User.create({ nome, email, senha })
+            const userCriado = await User.create({ nome, email, senha: hashSenha })
 
             return res.status(200).json({
                 msg: 'Usuario criado com sucesso!!',

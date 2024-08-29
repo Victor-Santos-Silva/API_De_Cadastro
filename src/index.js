@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const router = require('./router/router');
 const sequelize = require('./config/config');
@@ -26,7 +27,7 @@ sequelize.authenticate()
         await sequelize.sync();
     })
     .then(() => {
-        app.listen(8080, () => {
+        app.listen(process.env.PORT == null ? 8080 : process.env.PORT, () => {
             console.log("#########")
             console.log("On fire !!")
             console.log("#########")
@@ -37,14 +38,4 @@ sequelize.authenticate()
 
     })
 
-//listen = ouvindo a porta 8080
-
-
-/* app.listen(8080, () => {
-
-
-    console.log("#########")
-    console.log("On fire !!")
-    console.log("#########")
-}) */
 
