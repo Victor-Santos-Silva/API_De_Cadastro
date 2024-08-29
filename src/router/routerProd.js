@@ -4,11 +4,11 @@ const { validateProd, validateProdId } = require("../middlewares/ValidateProd");
 
 //configurar as rotas ( CRUD )
 
-router.get('/prod/',validateProd, (req, res) => {
+router.get('/prod/', validateProd, (req, res) => {
     UserController.getAll(req, res)
 });
 
-router.post('/prod/',validateProd, (req, res) => {
+router.post('/prod/', (req, res) => {
     UserController.create(req, res)
 });
 
