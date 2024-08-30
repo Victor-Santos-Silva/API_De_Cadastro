@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 function authenticateToken(req, res, next) {
     const token = req.headers['authorization']?.split(' ')[1];
     if (!token) {
-        return req.status(200).json({
+        return req.status(401).json({
             msg: 'Acesso negado.'
         })
     }
@@ -23,4 +23,4 @@ function authenticateToken(req, res, next) {
     })
 }
 
-//module.exports = { authenticateToken };
+module.exports = { authenticateToken };

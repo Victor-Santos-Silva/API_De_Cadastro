@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require('bcryptjs');
-const jwt = require("../middlewares/authenticateToken")
+const jwt = require('jsonwebtoken')
 
 const UserController = {
 
@@ -25,7 +25,7 @@ const UserController = {
 
             const token = jwt.sign({
                 email: user.email,
-                username: user.nome
+                username: user.nome,
             }, process.env.SECRET, { expiresIn: '1h' });
 
             return res.status(200).json({
@@ -38,7 +38,6 @@ const UserController = {
             return res.status(500).json({ msg: 'Acione o suporte' });
         };
     },
-
     create: async (req, res) => {
         try {
             const { nome, email, senha } = req.body;
