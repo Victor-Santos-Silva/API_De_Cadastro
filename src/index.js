@@ -7,9 +7,12 @@ const User = require("./models/User");
 
 const app = express();
 
+const routerUpload = require('./router/routerUpload')
+
 //Modelo API Json
 app.use(express.json())
 app.use('/api/user', router)
+app.use('/api/image', routerUpload)
 //REQ = Requisição
 //RES = Response
 app.get('/healthcheck', (req, res) => {
